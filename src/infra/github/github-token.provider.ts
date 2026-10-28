@@ -16,6 +16,7 @@ export class GithubTokenProvider {
     try {
       const { accessToken } = await auth.api.getAccessToken({
         body: {
+          useAccountCookie: true,
           userId,
         },
       });

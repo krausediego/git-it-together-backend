@@ -1,5 +1,5 @@
 import { betterAuth } from 'better-auth';
-import { organization, openAPI } from 'better-auth/plugins';
+import { organization, openAPI, oauthPopup, bearer } from 'better-auth/plugins';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { db } from '@/infra/database';
 import * as schema from '@/infra/database/schemas';
@@ -8,7 +8,7 @@ export const auth = betterAuth({
   basePath: '/api/auth',
   baseURL: 'http://localhost:3000',
   trustedOrigins: ['http://localhost:5173'],
-  plugins: [organization(), openAPI()],
+  plugins: [organization(), openAPI(), oauthPopup(), bearer()],
   database: drizzleAdapter(db, {
     provider: 'pg',
     usePlural: true,
