@@ -66,7 +66,8 @@ export class GithubGetContributionsService {
     }
 
     return {
-      totalContributions: user.contributionsCollection.totalCommitContributions,
+      totalContributions:
+        user.contributionsCollection.contributionCalendar.totalContributions,
       totalCommits: user.contributionsCollection.totalCommitContributions,
       totalPullRequests:
         user.contributionsCollection.totalPullRequestContributions,

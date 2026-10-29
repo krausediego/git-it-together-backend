@@ -14,14 +14,22 @@ export class GithubTokenProvider {
 
   async userToken(userId: string): Promise<string | null> {
     try {
+      const ctx = await auth.$context;
+      const accounts = await ctx.internalAdapter.findAccounts(userId);
+      const github = accounts.find(
+        (account) => account.providerId === 'github',
+      );
+
+      if (!github) {
+        return null;
+      }
+
       const { accessToken } = await auth.api.getAccessToken({
         body: {
-          useAccountCookie: true,
+          accountId: github.id,
           userId,
         },
       });
-
-      console.log('ACCESS TOKEN', accessToken);
 
       return accessToken ?? null;
     } catch {
