@@ -17,6 +17,10 @@ import {
     GithubGetProfileService,
     GithubGetContributionsService,
   ],
-  exports: [GithubGetProfileService, GithubGetContributionsService],
+  exports: [
+    GithubTokenProvider,
+    GithubGetProfileService,
+    GithubGetContributionsService,
+  ],
 })
 export class GithubModule {}

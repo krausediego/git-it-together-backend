@@ -5,6 +5,7 @@ import { auth } from '@/infra/auth';
 import { ContributionModule } from '@/features/contributions';
 import { APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 import { ZodSerializerInterceptor, ZodValidationPipe } from 'nestjs-zod';
+import { EventsModule } from '@/features/events';
 
 export const { ObserveModule, ObserveInstrument } = createObserveModule();
 
@@ -24,6 +25,7 @@ export const { ObserveModule, ObserveInstrument } = createObserveModule();
       serviceId: 'git-it-together-backend',
     }),
     ContributionModule,
+    EventsModule,
   ],
   providers: [
     { provide: APP_PIPE, useClass: ZodValidationPipe },

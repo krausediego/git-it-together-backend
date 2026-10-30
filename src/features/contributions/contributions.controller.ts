@@ -1,12 +1,10 @@
 import { Controller, Get } from '@nestjs/common';
 import { ContributionsService } from './contributions.service';
 import { Session } from '@thallesp/nestjs-better-auth';
-import { auth } from '@/infra/auth';
 import { ApiTags } from '@nestjs/swagger';
 import { ZodResponse } from 'nestjs-zod';
 import { ContributionResponseDto } from './contributions.dto';
-
-type AppSession = typeof auth.$Infer.Session;
+import type { AppSession } from '@/types';
 
 @ApiTags('contributions')
 @Controller('contributions')
